@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <!--<link src="/bootstrap-4.0.0/dist/css/bootstrap.min.css">-->
+   </head>
+  <body>
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <ul class="nav navbar-nav pull-right">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">HOme <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">ABout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="work.html">WOrks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">COntact</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Get Updates</h4>
+          </div>
+          <div class="modal-body">
+            <p>Name: <input id='nameModal'></input></p>
+            <p>Email: <input id='emailModal' tpye='email'></input></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" id='acceptModal' class="btn btn-primary" data-toggle='collapse' data-target='#collapseAccept' aria-expanded='false' aria-controls='collapseAccept'>Accept</button>
+            <div class="collapse" id="collapseAccept">
+                <div class="card card-block" id="cardAccept"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="first-slide" src="img/img1.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Get my updates.</h1>
+              <p>email = updates :)</p>
+              <!-- pop up window with sign up -->
+              <p><button class="btn btn-secondary-outline" id="btnSignUp" href="#" data-toggle="modal" data-target="#myModal">Sign up today</button></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="second-slide" src="img/img1.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-secondary-outline" id="btn2" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="third-slide" src="img/img1.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-secondary-outline" id="btn3" href="#" role="button">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+    <div class="panel navbar-light panel-default">
+      <div class="panel-footer">Panel footer</div>
+    </div>
+    
+    
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+      //carousel
+      $('.carousel').carousel({
+        interval: 2000
+      });
+      $('#btnSignUp').on('click', function(){
+        $('.carousel').carousel('pause');
+      });
+      $('#myCarousel').on('mouseenter', function(){
+        $('.carousel').carousel('pause');
+      });
+      $('#myCarousel').on('mouseout', function(){
+        $('.carousel').carousel('cycle');
+      });
+      //modal
+      $('#myModal').on('hidden.bs.modal', function () {
+        $('#collapseAccept').collapse('hide');
+        $('#emailModal').val('');
+        $('#nameModal').val('');
+      });
+      $('#acceptModal').on('click', function(){
+      });
+      //modal ----- email submission 
+      $('#acceptModal').on('click', function(){
+        var email = $('#emailModal').val();
+        var name = $('#nameModal').val();
+        /*if( (name != null) && ($(email):contains('@')) && ($(email):contains('.')) ){
+             $('#cardAccept').html('Thank you ' + name + '! ' + 'You will recieve an email from us soon!')}*/
+        //check name
+        if(!name.match(/\S/) && !email.match(/\S/))
+          $('#cardAccept').html('Please check if you entered both a valid name and email')
+        //check email
+        else if(!email.match(/\S/))
+          $('#cardAccept').html('Please check if you entered a valid email')
+        else
+          $('#cardAccept').html('Please check if you entered a name')
+          
+        var jsonString = '{"name":"'+ name +'","email":"' + email + '"}';
+        var json = JSON.parse(jsonString);
+        console.log(json);
+        //$.getJSON('data/data.js', function(data){
+          //data.append(email);
+        //})
+      });
+      /*$.getJSON( "data/data.js", function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          items.push( "<li id='" + key + "'>" + val + "</li>" );
+        });
+       
+        $( "<ul/>", {
+          "class": "my-new-list",
+          html: items.join( "" )
+        }).appendTo( "body" );
+      });*/
+    </script>
+
+  </body>
+</html>
